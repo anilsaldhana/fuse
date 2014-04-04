@@ -43,6 +43,7 @@ public class PicketLinkCamelProcessor implements Processor {
     public static final String PRINCIPAL_KEY = "principal";
 
     @Inject
+    @Identity.Stateless
     private Identity identity;
 
     @Inject
@@ -61,12 +62,6 @@ public class PicketLinkCamelProcessor implements Processor {
 
         String username = incomingMessage.getHeader(USERNAME_KEY, String.class);
         String password = incomingMessage.getHeader(PASSWORD_KEY, String.class);
-
-        boolean shouldWeLogOut = preLogOut(username);
-        if (shouldWeLogOut) {
-            // we got a new user on the message
-            identity.logout();
-        }
 
         if (identity.isLoggedIn() == false) {
             if (username == null) {
@@ -96,23 +91,6 @@ public class PicketLinkCamelProcessor implements Processor {
             // Unsuccessful
             throw new LoginException("Authentication failed");
         }
-    }
-
-    /**
-     * {@link org.picketlink.Identity} is session scoped. If the message came with an username that is different from what we
-     * are currently logged in, we would like to reauthenticate the user
-     *
-     * @param passedUserName
-     * @return
-     */
-    protected boolean preLogOut(String passedUserName) {
-        if (identity.isLoggedIn()) {
-            String currentUser = getCurrentUser();
-            if (currentUser.equals(passedUserName) == false) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

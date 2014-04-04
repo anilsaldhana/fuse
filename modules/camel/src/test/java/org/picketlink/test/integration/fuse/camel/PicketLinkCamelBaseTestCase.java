@@ -25,6 +25,7 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
+import org.junit.After;
 import org.junit.Before;
 import org.picketlink.integration.fuse.camel.PicketLinkCamelProcessor;
 
@@ -70,4 +71,9 @@ public class PicketLinkCamelBaseTestCase extends CamelTestSupport {
         });
     }
 
+    @After
+    public void tearDown() throws Exception{
+        context.getRouteDefinitions().clear();
+        super.tearDown();
+    }
 }

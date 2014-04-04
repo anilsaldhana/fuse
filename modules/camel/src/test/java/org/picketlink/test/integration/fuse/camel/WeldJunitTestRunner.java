@@ -31,7 +31,7 @@ import org.junit.runners.model.InitializationError;
 public class WeldJunitTestRunner extends BlockJUnit4ClassRunner {
     private final Class<?> klass;
     private final Weld weld;
-    private final WeldContainer container;
+    private WeldContainer container;
 
     /**
      * Creates a BlockJUnit4ClassRunner to run {@code klass}
@@ -43,20 +43,11 @@ public class WeldJunitTestRunner extends BlockJUnit4ClassRunner {
         super(klass);
         this.klass = klass;
         this.weld = new Weld();
-        this.container = weld.initialize();
     }
 
     @Override
     protected Object createTest() throws Exception {
-
-        /*
-         * Instance<Object> instances = container.instance();
-         *
-         * Iterator<Object> iterator = instances.iterator(); while(iterator.hasNext()){ Object object = iterator.next();
-         *
-         * if(object.getClass() == PicketLinkCamelProcessor.class && klass == PicketLinkCamelProcessor.class){ return object; }
-         * }
-         */
+        container = weld.initialize();
         return container.instance().select(klass).get();
     }
 }

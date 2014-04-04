@@ -14,7 +14,7 @@
     </description>
 
    <url>http://www.picketlink.org</url>
-   
+
    <developers>
       <developer>
          <name>Anil Saldhana</name>
@@ -23,7 +23,7 @@
          <name>Pedro Silva</name>
       </developer>
    </developers>
-   
+
    <licenses>
       <license>
          <name>Apache License, Version 2.0</name>
@@ -44,10 +44,10 @@
       <jboss.logging.processor.version>1.0.3.Final</jboss.logging.processor.version>
       <junit.version>4.10</junit.version>
       <mockito.version>1.9.0</mockito.version>
-      <picketlink.version>2.6.0.CR1</picketlink.version>
+      <picketlink.version>2.6.0-SNAPSHOT</picketlink.version>
    </properties>
 
-   <modules>     
+   <modules>
       <module>modules/camel</module>
       <module>modules/amq</module>
    </modules>
@@ -65,7 +65,7 @@
           <artifactId>picketlink-common</artifactId>
           <version>${picketlink.version}</version>
       </dependency>
-      
+
       <dependency>
           <groupId>org.picketlink</groupId>
           <artifactId>picketlink-api</artifactId>
@@ -110,14 +110,14 @@
           <version>${jboss.logging.version}</version>
           <scope>provided</scope>
       </dependency>
-      
+
       <dependency>
           <groupId>org.jboss.logging</groupId>
           <artifactId>jboss-logging-processor</artifactId>
           <version>${jboss.logging.processor.version}</version>
           <scope>provided</scope>
       </dependency>
-      
+
       <dependency>
           <groupId>org.jboss.shrinkwrap.resolver</groupId>
           <artifactId>shrinkwrap-resolver-bom</artifactId>
@@ -125,7 +125,7 @@
           <scope>test</scope>
           <type>pom</type>
       </dependency>
-            
+
       <dependency>
           <groupId>org.jboss.arquillian</groupId>
           <artifactId>arquillian-bom</artifactId>
@@ -133,14 +133,14 @@
           <scope>import</scope>
           <type>pom</type>
       </dependency>
-      
+
       <dependency>
           <groupId>junit</groupId>
           <artifactId>junit</artifactId>
           <version>${junit.version}</version>
           <scope>test</scope>
       </dependency>
-      
+
       <dependency>
          <groupId>org.mockito</groupId>
          <artifactId>mockito-all</artifactId>
@@ -150,7 +150,7 @@
 
     </dependencies>
    </dependencyManagement>
-   
+
    <build>
       <pluginManagement>
         <plugins>
@@ -189,7 +189,7 @@
                  <target>1.6</target>
               </configuration>
            </plugin>
-           
+
            <plugin>
               <artifactId>maven-surefire-plugin</artifactId>
               <version>2.12</version>
@@ -268,7 +268,7 @@
          </plugins>
 
       </pluginManagement>
-         
+
    </build>
 
    <profiles>

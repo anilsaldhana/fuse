@@ -39,6 +39,7 @@ import org.picketlink.integration.fuse.camel.PicketLinkCamelProcessor;
  */
 public class PicketLinkCamelAuthorizationPolicy implements AuthorizationPolicy {
     @Inject
+    @Identity.Stateless
     protected Identity identity;
 
     /**
